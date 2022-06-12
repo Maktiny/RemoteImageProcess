@@ -28,15 +28,12 @@ RGB与IHS变换的基本公式：
 
 ![](http://ww1.sinaimg.cn/large/0070vHShly1fxtym2vb50j30i707777d.jpg)
 
-多光谱图像
 
-[]: https://www.jianguoyun.com/p/DbgnnwwQgtCdBxixvIoB
 
-全色图像：
+![多光谱图像](https://www.jianguoyun.com/p/DbgnnwwQgtCdBxixvIoB)
 
-[https://www.jianguoyun.com/p/DYdVTi0QgtCdBxiwvIoB]: 
+![全色图像](https://www.jianguoyun.com/p/DYdVTi0QgtCdBxiwvIoB)
 
-处理结果：
+![处理结果](https://www.jianguoyun.com/p/DY7Z8kUQgtCdBxi1vIoB)
 
-[]: https://www.jianguoyun.com/p/DY7Z8kUQgtCdBxi1vIoB
 

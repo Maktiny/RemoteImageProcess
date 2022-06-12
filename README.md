@@ -1,17 +1,36 @@
-#  Remote Image processing
+## IHS遥感图像融合
 
-这是一个利用GDAL库对图像处理的例子，旨在认识，理解GDAL库。GDAL是一个能够处理各种栅格地理数据格式的库。
+常用的颜色模型处了RGB三原色模型之外，另外一种广泛采用的颜色模型是亮度Intensity、色调Hue、饱和度Saturation（IHS颜色模型）
 
-连接：<https://www.gdal.org/>
+![](http://ww1.sinaimg.cn/large/0070vHShly1fxtybmctudj30sg0d0jxd.jpg)
 
-项目工具：Visual C++ 2010 express版本
+亮度表示光谱的整体亮度大小，对应于图像的空间信息属性；
 
-工具连接：：<https://ouceducn-my.sharepoint.com/:u:/g/personal/gaofeng_ouc_edu_cn/EeLSAzv5H5tIgXPm3bADAJcBklbVYqMXw-G6G39t4ZGmEg?e=PZSmoS>
+色调描述纯色的属性，决定于光谱的主波长；
 
-GDAL库，GDAL库的使用，需要三个文件，.h文件，.dill文件，.lib文件
+饱和度表征光谱的主波长在强度中的比例，色调和饱和度代表图像的光谱分辨率。
 
-所需文件包连接：<https://ouceducn-my.sharepoint.com/:u:/g/personal/gaofeng_ouc_edu_cn/ES8fvuffgxdOs7lSwpTzocYBd4gJFrDde6vNIXFhQyMWeQ?e=7LbJgt>
+IHS变换图像融合就是建立在IHS空间模型的基础上，其基本思想就是在IHS空间中，将低空间分辨率的多光谱图像的亮度分量用高空间分辨率的灰度图象替换。
 
-注意(环境配置）：在建立项目的时候，必须把gdal包和gdal_i.lib文件复制到项目的当前目录下，将gdal18.dll文件复制到Debug或者Release文件目录下即可。
+![](http://ww1.sinaimg.cn/large/0070vHShly1fxtycx6ynlj30hv08ngms.jpg)
 
-程序目的：将一张普通.jpg格式的图片读入，然后输出成.tif格式。![](http://ww1.sinaimg.cn/large/0070vHShly1fw187zcndaj30h80bhdfz.jpg)
+算法描述：
+
+1) 将多光谱影像重采样到与全色影像具有相同的分辨率；
+
+(2) 将多光谱图像的Ｒ、Ｇ、Ｂ三个波段转换到IHS空间，得到Ｉ、Ｈ、Ｓ三个分量；
+
+(3) 以Ｉ分量为参考，对全色影像进行直方图匹配
+
+(4) 用全色影像替代Ｉ分量，然后同Ｈ、Ｓ分量一起逆变换到RGB空间，从而得到融合图像。
+
+RGB与IHS变换的基本公式：
+
+![](http://ww1.sinaimg.cn/large/0070vHShly1fxtym2vb50j30i707777d.jpg)
+
+
+![多光谱图像](https://www.jianguoyun.com/p/DbgnnwwQgtCdBxixvIoB)
+
+![全色图像](https://www.jianguoyun.com/p/DYdVTi0QgtCdBxiwvIoB)
+
+![处理结果](https://www.jianguoyun.com/p/DY7Z8kUQgtCdBxi1vIoB)
